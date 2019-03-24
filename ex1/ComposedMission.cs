@@ -8,32 +8,37 @@ namespace ex1
     {
         private string name;
         private string type;
+        private List<func> listOfFuncs;
+        public event EventHandler<double> OnCalculate;
 
-        public ComposedMission(string name, string type)
+        public ComposedMission(string name)
         {
             this.name = name;
-            this.type = type;
+            this.type = "Composed";
+            this.listOfFuncs = new List<func>();
         }
 
-        public string Name {
-            get
-            {
-                return this.name;
-            }
+        public string Name { get; }
+
+        public string Type { get; }
+
+        public ComposedMission Add(func value)
+        {
+            this.listOfFuncs.Add(value);
+            return this;
         }
-
-        public string Type {
-            get
-            {
-                return this.type;
-            }
-        };
-
-        public event EventHandler<double> OnCalculate;
 
         public double Calculate(double value)
         {
-            throw new NotImplementedException();
+            var ret = value;
+            foreach (func f in this.listOfFuncs)
+            {
+                ret = f(ret);
+            }
+            if (this.OnCalculate != null)
+            {
+                this.OnCalculate.Invoke(this, ret);
+            }
         }
     }
 }

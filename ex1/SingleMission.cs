@@ -4,31 +4,24 @@ using System.Text;
 
 namespace ex1 {
     class SingleMission : IMission {
-        private string name;
-        private string type;
-
-        public SingleMission(string name, string type)
+        private func f;
+        public SingleMission(func f, string name)
         {
-            this.name = name;
-            this.type = type;
+            this.Name = name;
+            this.Type = "Single";
+            this.f = f;
         }
 
-        public string Name {
-            get { 
-                return this.name;
-            }
-        }
+        public string Name { get; }
 
-        public string Type {
-            get{
-                return this.type;
-            }
-        }
+        public string Type { get; }
 
         public event EventHandler<double> OnCalculate;
 
         public double Calculate(double value) {
-            
+            double result = f(value);
+            OnCalculate.Invoke(this,result);
+            return result;
         }
     }
 }
