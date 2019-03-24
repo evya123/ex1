@@ -27,7 +27,9 @@ namespace ex1
             }
             set { funcArray[key] = value; }
         }
+#pragma warning disable IDE1006 // Naming Styles
         public List<String> getAllMissions()
+#pragma warning restore IDE1006 // Naming Styles
         {
             return funcArray.Keys.ToList();
         }

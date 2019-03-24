@@ -4,7 +4,9 @@ using System.Text;
 
 namespace ex1 {
     class SingleMission : IMission {
+#pragma warning disable IDE0044 // Add readonly modifier
         private func f;
+#pragma warning restore IDE0044 // Add readonly modifier
         public SingleMission(func f, string name)
         {
             this.Name = name;

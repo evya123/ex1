@@ -35,9 +35,13 @@ namespace ex1
             PrintAvailableFunctions(funcList);
 
             // This handler will output the screen every mission that was activated and it's value
+#pragma warning disable IDE0039 // Use local function
             EventHandler<double> LogHandler = (sender, val) =>
+#pragma warning restore IDE0039 // Use local function
             {
+#pragma warning disable IDE0019 // Use pattern matching
                 IMission mission = sender as IMission;
+#pragma warning restore IDE0019 // Use pattern matching
 
                 if (mission != null)
                 {
@@ -45,7 +49,9 @@ namespace ex1
                 }
             };
 
+#pragma warning disable IDE0039 // Use local function
             EventHandler<double> SqrtHandler = (sender, val) =>
+#pragma warning restore IDE0039 // Use local function
             {
                 // This function will Create a sqrt mission and will continue to sqrt until a number less than 2
                 SingleMission sqrtMission = new SingleMission(funcList["Sqrt"], "SqrtMission");
