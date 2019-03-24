@@ -20,7 +20,10 @@ namespace ex1 {
 
         public double Calculate(double value) {
             double result = f(value);
-            OnCalculate.Invoke(this,result);
+            if (this.OnCalculate != null)
+            {
+                OnCalculate.Invoke(this, result);
+            }
             return result;
         }
     }

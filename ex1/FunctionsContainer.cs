@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace ex1
 {
-    delegate Double func(double val);
+    delegate double func(double val);
     class FunctionsContainer
     {
-        Dictionary<String, func> funcArray;
+        private Dictionary<String, func> funcArray;
 
         public FunctionsContainer()
         {
@@ -26,6 +26,10 @@ namespace ex1
                 return funcArray[key];
             }
             set { funcArray[key] = value; }
+        }
+        public List<String> getAllMissions()
+        {
+            return funcArray.Keys.ToList();
         }
     }
 }

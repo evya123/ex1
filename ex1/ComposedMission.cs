@@ -6,15 +6,13 @@ namespace ex1
 {
     class ComposedMission : IMission
     {
-        private string name;
-        private string type;
         private List<func> listOfFuncs;
         public event EventHandler<double> OnCalculate;
 
         public ComposedMission(string name)
         {
-            this.name = name;
-            this.type = "Composed";
+            this.Name = name;
+            this.Type = "Composed";
             this.listOfFuncs = new List<func>();
         }
 
@@ -39,6 +37,8 @@ namespace ex1
             {
                 this.OnCalculate.Invoke(this, ret);
             }
+
+            return ret;
         }
     }
 }
